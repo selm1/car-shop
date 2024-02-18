@@ -1,16 +1,11 @@
 import Link from "next/link";
-import Image from "next/image";
+import Logo from "@/app/ui/Logo";
+
 export default function NavBar() {
   return (
-    <div className="flex flex-row items-center justify-between px-40">
+    <div className="sticky top-0 z-10 flex h-16 flex-row items-center justify-between bg-red-600 px-20 text-lg font-semibold text-white">
       <Link href="/">
-        <Image
-          className="object-cover"
-          src="/logo.png"
-          alt="logo"
-          width={200}
-          height={100}
-        />
+        <Logo />
       </Link>
       <Link href="/profile">Profile</Link>
     </div>
