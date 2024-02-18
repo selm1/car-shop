@@ -1,19 +1,30 @@
-export function AdCardsSkeleton() {
+import { Skeleton } from "@/components/ui/skeleton";
+
+export function SkeletonCard() {
   return (
-    <>
-      <AdCardSkeleton />
-      <AdCardSkeleton />
-      <AdCardSkeleton />
-    </>
+    <div className="flex h-96 flex-col space-y-3">
+      <Skeleton className="h-[125px] w-[250px] rounded-xl" />
+      <div className="space-y-2">
+        <Skeleton className="h-4 w-[250px]" />
+        <Skeleton className="h-4 w-[200px]" />
+      </div>
+    </div>
   );
 }
 
-export function AdCardSkeleton() {
+export function CardsSkeleton() {
   return (
-    <div>
-      <h1>Loading...</h1>
-      <p>Loading...</p>
-      <p>Loading...</p>
-    </div>
+    <>
+      <SkeletonCard />
+      <SkeletonCard />
+      <SkeletonCard />
+      <SkeletonCard />
+      <SkeletonCard />
+      <SkeletonCard />
+      <SkeletonCard />
+      <SkeletonCard />
+      <SkeletonCard />
+      <SkeletonCard />
+    </>
   );
 }

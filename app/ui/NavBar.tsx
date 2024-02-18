@@ -7,7 +7,12 @@ export default function NavBar() {
       <Link href="/">
         <Logo />
       </Link>
-      <Link href="/profile">Profile</Link>
+      <Link
+        className="red_button rounded-lg px-3 py-1 underline duration-75 hover:bg-white hover:text-red-600"
+        href="/profile"
+      >
+        Profile
+      </Link>
     </div>
   );
 }
