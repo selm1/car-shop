@@ -1,4 +1,7 @@
 import { CarAd } from "@/app/lib/definitions";
+import car from "@/public/car.jpeg";
+import Image from "next/image";
+import Link from "next/link";
 import {
   Card,
   CardContent,
@@ -173,20 +176,29 @@ export default async function CardWrapper() {
   return (
     <>
       {ads.map((ad) => (
-        <Card key={ad.id} className="h-96 duration-75 hover:scale-105">
-          <CardHeader>
-            <CardTitle>{ad.title}</CardTitle>
-            <CardDescription>
-              {ad.make} - {ad.model} - {ad.year}
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p>{ad.description}</p>
-          </CardContent>
-          <CardFooter>
-            <p>{ad.price}</p>
-          </CardFooter>
-        </Card>
+        <Link key={ad.id} href={`/ads/${ad.id}`}>
+          <Card className="min-h-96 duration-75 hover:scale-105">
+            <CardHeader>
+              <CardTitle>{ad.title}</CardTitle>
+              <CardDescription>
+                {ad.make} {ad.model} {ad.year}
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="flex flex-col gap-1">
+              <Image src={car} alt="car" />
+              <p>{ad.description}</p>
+
+              <p>{ad.mileage}</p>
+
+              <p>{ad.color}</p>
+
+              <p>{ad.status}</p>
+            </CardContent>
+            <CardFooter>
+              <p>{ad.price}</p>
+            </CardFooter>
+          </Card>
+        </Link>
       ))}
     </>
   );
