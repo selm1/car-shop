@@ -1,7 +1,7 @@
 import { fetchAd } from "@/app/lib/data";
 
-export default function Page({ params }: { params: { id: string } }) {
+export default async function Page({ params }: { params: { id: string } }) {
   const id = params.id;
-  const ad = fetchAd(id);
+  const ad = await fetchAd(id);
   return <div>{id}</div>;
 }
