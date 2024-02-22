@@ -10,169 +10,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-
-const cars: CarAd[] = [
-  {
-    title: "Nissan Maxima for Sale",
-    description: "2012 Nissan Maxima",
-    price: 10000,
-    make: "Nissan",
-    model: "Maxima",
-    year: 2012,
-    mileage: 100000,
-    color: "Silver",
-    status: "used",
-    sold: false,
-    id: "1",
-  },
-  {
-    title: "Nissan Maxima for Sale",
-    description: "2012 Nissan Maxima",
-    price: 10000,
-    make: "Nissan",
-    model: "Maxima",
-    year: 2012,
-    mileage: 100000,
-    color: "Silver",
-    status: "used",
-    sold: false,
-    id: "2",
-  },
-  {
-    title: "Nissan Maxima for Sale",
-    description: "2012 Nissan Maxima",
-    price: 10000,
-    make: "Nissan",
-    model: "Maxima",
-    year: 2012,
-    mileage: 100000,
-    color: "Silver",
-    status: "used",
-    sold: false,
-    id: "3",
-  },
-  {
-    title: "Nissan Maxima for Sale",
-    description: "2012 Nissan Maxima",
-    price: 10000,
-    make: "Nissan",
-    model: "Maxima",
-    year: 2012,
-    mileage: 100000,
-    color: "Silver",
-    status: "used",
-    sold: false,
-    id: "1",
-  },
-  {
-    title: "Nissan Maxima for Sale",
-    description: "2012 Nissan Maxima",
-    price: 10000,
-    make: "Nissan",
-    model: "Maxima",
-    year: 2012,
-    mileage: 100000,
-    color: "Silver",
-    status: "used",
-    sold: false,
-    id: "2",
-  },
-  {
-    title: "Nissan Maxima for Sale",
-    description: "2012 Nissan Maxima",
-    price: 10000,
-    make: "Nissan",
-    model: "Maxima",
-    year: 2012,
-    mileage: 100000,
-    color: "Silver",
-    status: "used",
-    sold: false,
-    id: "3",
-  },
-  {
-    title: "Nissan Maxima for Sale",
-    description: "2012 Nissan Maxima",
-    price: 10000,
-    make: "Nissan",
-    model: "Maxima",
-    year: 2012,
-    mileage: 100000,
-    color: "Silver",
-    status: "used",
-    sold: false,
-    id: "1",
-  },
-  {
-    title: "Nissan Maxima for Sale",
-    description: "2012 Nissan Maxima",
-    price: 10000,
-    make: "Nissan",
-    model: "Maxima",
-    year: 2012,
-    mileage: 100000,
-    color: "Silver",
-    status: "used",
-    sold: false,
-    id: "2",
-  },
-  {
-    title: "Nissan Maxima for Sale",
-    description: "2012 Nissan Maxima",
-    price: 10000,
-    make: "Nissan",
-    model: "Maxima",
-    year: 2012,
-    mileage: 100000,
-    color: "Silver",
-    status: "used",
-    sold: false,
-    id: "3",
-  },
-  {
-    title: "Nissan Maxima for Sale",
-    description: "2012 Nissan Maxima",
-    price: 10000,
-    make: "Nissan",
-    model: "Maxima",
-    year: 2012,
-    mileage: 100000,
-    color: "Silver",
-    status: "used",
-    sold: false,
-    id: "1",
-  },
-  {
-    title: "Nissan Maxima for Sale",
-    description: "2012 Nissan Maxima",
-    price: 10000,
-    make: "Nissan",
-    model: "Maxima",
-    year: 2012,
-    mileage: 100000,
-    color: "Silver",
-    status: "used",
-    sold: false,
-    id: "2",
-  },
-  {
-    title: "Nissan Maxima for Sale",
-    description: "2012 Nissan Maxima",
-    price: 10000,
-    make: "Nissan",
-    model: "Maxima",
-    year: 2012,
-    mileage: 100000,
-    color: "Silver",
-    status: "used",
-    sold: false,
-    id: "3",
-  },
-];
+import { fetchAds } from "@/app/lib/data";
 
 export default async function CardWrapper() {
-  // await new Promise((resolve) => setTimeout(resolve, 3000));
-  const ads = cars;
+  const ads = await fetchAds();
   return (
     <>
       {ads.map((ad) => (
@@ -181,21 +22,22 @@ export default async function CardWrapper() {
             <CardHeader>
               <CardTitle>{ad.title}</CardTitle>
               <CardDescription>
-                {ad.make} {ad.model} {ad.year}
+                {ad.make} {ad.model} {ad.year} {ad.color}
               </CardDescription>
             </CardHeader>
-            <CardContent className="flex flex-col gap-1">
-              <Image src={car} alt="car" />
+            <CardContent className="m-0 flex flex-col">
+              <Image src={car} alt="car" className="mb-6" />
               <p>{ad.description}</p>
 
-              <p>{ad.mileage}</p>
-
-              <p>{ad.color}</p>
-
-              <p>{ad.status}</p>
+              <div className="mt-6">
+                <p>Milage: {ad.mileage} km</p>
+                <p>Status: {ad.status}</p>
+              </div>
             </CardContent>
             <CardFooter>
-              <p>{ad.price}</p>
+              <p className="text-bold text-l rounded-xl bg-slate-700 p-2 text-white">
+                QAR {ad.price}
+              </p>
             </CardFooter>
           </Card>
         </Link>
